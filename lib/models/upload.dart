@@ -14,7 +14,6 @@ import 'dart:convert';
 
 /// 上传参数
 class UpdateOptions {
-
   UpdateOptions({
     this.accessKeyID,
     this.accessSecretID,
@@ -26,16 +25,15 @@ class UpdateOptions {
     this.filesData,
     this.oriFileNames,
     this.filesBaseCode,
-  }) :super();
+  }) : super();
 
-  loadfiles(List<File> files) {
+  Future loadfiles(List<File> files) async {
     if (files != null && files.length > 0) {
       /// 有数据
       this.filesBaseCode = [];
       for (File file in files) {
-        file.readAsBytes().then((List<int> filebytes) {
-          this.filesBaseCode.add(base64Encode(filebytes));
-        });
+        List<int> byres = await file.readAsBytes();
+        this.filesBaseCode.add(base64Encode(byres));
       }
     }
   }
@@ -55,10 +53,7 @@ class UpdateOptions {
 
   String toJson() {
     List suffix = (this.oriFileNames ?? []).map((var name) {
-      return name
-          .toString()
-          .split('.')
-          .last;
+      return name.toString().split('.').last;
     }).toList();
 
     return jsonEncode({
@@ -105,8 +100,6 @@ class UpdateOptions {
 
   /// 原图片名
   List<dynamic> oriFileNames;
-
-
 }
 
 /// 进度
