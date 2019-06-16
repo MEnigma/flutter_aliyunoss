@@ -1,0 +1,33 @@
+PODS:
+  - AliyunOSSiOS (2.10.7)
+  - Flutter (1.0.0)
+  - flutter_aliyunoss (0.0.1):
+    - AliyunOSSiOS
+    - Flutter
+    - MJExtension
+  - MJExtension (3.0.17)
+
+DEPENDENCIES:
+  - Flutter (from `.symlinks/flutter/ios`)
+  - flutter_aliyunoss (from `.symlinks/plugins/flutter_aliyunoss/ios`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AliyunOSSiOS
+    - MJExtension
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: ".symlinks/flutter/ios"
+  flutter_aliyunoss:
+    :path: ".symlinks/plugins/flutter_aliyunoss/ios"
+
+SPEC CHECKSUMS:
+  AliyunOSSiOS: 602b6a4e70e62a5f0a6431c20496343141d7e66f
+  Flutter: 9d0fac939486c9aba2809b7982dfdbb47a7b0296
+  flutter_aliyunoss: d23859c912a065f0d915cec5a140a597cbe2bce0
+  MJExtension: 74ec83124a68891619fb7ba9c5c811bbf1691076
+
+PODFILE CHECKSUM: aff02bfeed411c636180d6812254b2daeea14d09
+
+COCOAPODS: 1.5.3
