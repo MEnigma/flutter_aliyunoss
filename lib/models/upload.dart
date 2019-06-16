@@ -14,17 +14,21 @@ import 'dart:convert';
 
 /// 上传参数
 class UpdateOptions {
-  UpdateOptions.files(
-      {this.accessKeyID,
-      this.accessSecretID,
-      this.accessToken,
-      this.endPoint,
-      this.buketname,
-      this.filesPath,
-      this.dirname,
-      this.filesData,
-      this.oriFileNames,
-      List<File> files}) {
+
+  UpdateOptions({
+    this.accessKeyID,
+    this.accessSecretID,
+    this.accessToken,
+    this.endPoint,
+    this.buketname,
+    this.filesPath,
+    this.dirname,
+    this.filesData,
+    this.oriFileNames,
+    this.filesBaseCode,
+  }) :super();
+
+  loadfiles(List<File> files) {
     if (files != null && files.length > 0) {
       /// 有数据
       this.filesBaseCode = [];
@@ -50,9 +54,11 @@ class UpdateOptions {
   }
 
   String toJson() {
-
-    List suffix = (this.oriFileNames ?? []).map((var name){
-      return name.toString().split('.').last;
+    List suffix = (this.oriFileNames ?? []).map((var name) {
+      return name
+          .toString()
+          .split('.')
+          .last;
     }).toList();
 
     return jsonEncode({
