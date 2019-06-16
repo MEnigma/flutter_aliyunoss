@@ -17,8 +17,9 @@ class MKAliyunOSS {
   /// 通道
   final MethodChannel _ossChannel = const MethodChannel("upload#file");
 
-  Future<UpdateResult> uploadFile(UpdateOptions options){
-    return _ossChannel.invokeMethod("uploadFile",options.toJson());
+  Future<UpdateResult> uploadFile(UpdateOptions options) async {
+    Map result = await _ossChannel.invokeMethod("uploadFile",options.toJson());
+    return UpdateResult()..initFromJson(result);
   }
 
 

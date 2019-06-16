@@ -118,7 +118,7 @@ class UpdateProgress {
 
 /// 上传结果
 class UpdateResult {
-  initFromJson(Map<String, dynamic> data) {
+  initFromJson(Map data) {
     this.result = int.parse((data['result'] ?? "").toString()) == 1;
     this.message = data['message'] ?? "";
     this.totalnum = int.parse((data['totalnum'] ?? "").toString());
