@@ -27,6 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 /** buket */
 @property (nonatomic ,copy) NSString * buketname;
 
+/** 文件夹路径 */
+@property (nonatomic ,copy) NSString * dirname;
 
 /** 图片地址 */
 @property (nonatomic ,copy) NSArray<NSString*> *filesPath;

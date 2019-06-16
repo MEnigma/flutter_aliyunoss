@@ -11,9 +11,9 @@
 import "package:flutter/material.dart";
 import 'dart:io';
 import 'dart:convert';
+
 /// 上传参数
 class UpdateOptions {
-
   UpdateOptions.files(
       {this.accessKeyID,
       this.accessSecretID,
@@ -21,17 +21,18 @@ class UpdateOptions {
       this.endPoint,
       this.buketname,
       this.filesPath,
+      this.dirname,
       this.filesData,
       List<File> files}) {
-      if(files != null && files.length>0){
-        /// 有数据
-        this.filesBaseCode = [];
-        for (File file in files){
-          file.readAsBytes().then((List<int> filebytes ){
-            this.filesBaseCode.add(base64Encode(filebytes));
-          });
-        }
+    if (files != null && files.length > 0) {
+      /// 有数据
+      this.filesBaseCode = [];
+      for (File file in files) {
+        file.readAsBytes().then((List<int> filebytes) {
+          this.filesBaseCode.add(base64Encode(filebytes));
+        });
       }
+    }
   }
 
   initFromJson(Map<String, dynamic> data) {
@@ -42,6 +43,7 @@ class UpdateOptions {
     this.buketname = data['buketname'] ?? "";
     this.filesPath = data['filesPath'] ?? [];
     this.filesData = data['filesData'] ?? [];
+    this.dirname = data['dirname'] ?? "";
     this.filesBaseCode = data['filesBaseCode'] ?? [];
   }
 
@@ -53,6 +55,7 @@ class UpdateOptions {
       'endPoint': this.endPoint,
       'buketname': this.buketname,
       'filesPath': this.filesPath,
+      'dirname': this.dirname,
       'filesData': this.filesData,
       'filesBaseCode': this.filesBaseCode,
     };
@@ -72,6 +75,9 @@ class UpdateOptions {
 
   /// buket
   String buketname;
+
+  /// 文件夹路径
+  String dirname;
 
   /// 图片地址
   List<String> filesPath;

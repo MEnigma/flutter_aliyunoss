@@ -60,7 +60,9 @@
         OSSPutObjectRequest *putRequest = [OSSPutObjectRequest.alloc init];
         putRequest.uploadingData = [NSData.alloc initWithBase64EncodedString:options.filesData[i] options:NSDataBase64DecodingIgnoreUnknownCharacters];
         putRequest.bucketName = options.buketname;
-        putRequest.objectKey = [NSString stringWithFormat:@"%u",arc4random()];
+        
+        NSString *dirname = (options.dirname && options.dirname.length>0) ? [options.dirname stringByAppendingString:@"/"] : @"";
+        putRequest.objectKey = [NSString stringWithFormat:@"%@%u",dirname,arc4random()];
         OSSTask *task = [client putObject:putRequest];
         [task waitUntilFinished];
         if(task.error){
