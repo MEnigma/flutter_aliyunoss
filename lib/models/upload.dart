@@ -47,8 +47,8 @@ class UpdateOptions {
     this.filesBaseCode = data['filesBaseCode'] ?? [];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
+  String toJson() {
+    return jsonEncode({
       'accessKeyID': this.accessKeyID,
       'accessSecretID': this.accessSecretID,
       'accessToken': this.accessToken,
@@ -58,7 +58,7 @@ class UpdateOptions {
       'dirname': this.dirname,
       'filesData': this.filesData,
       'filesBaseCode': this.filesBaseCode,
-    };
+    });
   }
 
   /// access key
@@ -99,12 +99,12 @@ class UpdateProgress {
         double.parse((data['totalBytesExpectedToSend'] ?? "0").toString());
   }
 
-  Map<String, dynamic> toJson() {
-    return {
+  String toJson() {
+    return jsonEncode({
       'bytesSent': this.bytesSent,
       'totalByteSent': this.totalByteSent,
       'totalBytesExpectedToSend': this.totalBytesExpectedToSend,
-    };
+    });
   }
 
   /// 已发送
@@ -126,14 +126,14 @@ class UpdateResult {
     this.failNum = int.parse((data['failNum'] ?? "").toString());
   }
 
-  Map<String, dynamic> toJson() {
-    return {
+  String toJson() {
+    return jsonEncode({
       'result': this.result,
       'message': this.message,
       'totalnum': this.totalnum,
       'succedNum': this.succedNum,
       'failNum': this.failNum,
-    };
+    });
   }
 
   ///  结果

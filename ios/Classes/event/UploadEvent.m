@@ -40,6 +40,8 @@
     NSString *method = [NSString stringWithFormat:@"%@:",methodCall.method];
     if ([self respondsToSelector:NSSelectorFromString(method)]) {
         [self performSelector:NSSelectorFromString(method) withObject:methodCall];
+    }else{
+        self.result(FlutterMethodNotImplemented);
     }
     
 }
