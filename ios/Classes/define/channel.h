@@ -9,6 +9,6 @@
 #define channel_h
 
 
-const NSString * CHANNEL_UPLOADFILE = "upload#file";
+const NSString * CHANNEL_UPLOADFILE = @"upload#file";
 
 #endif /* channel_h */

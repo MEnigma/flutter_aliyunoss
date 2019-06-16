@@ -1,17 +1,23 @@
 //
-//  UpdateOptions.m
-//  AliyunOSSiOS
+//  UploadOptions.m
+//  flutter_aliyunoss
 //
 //  Created by Mark on 2019/6/16.
 //
 
-#import "UpdateOptions.h"
+#import "UploadOptions.h"
 
 @implementation UpdateOptions
 
 @end
 
 @implementation UpdateProgress
+
+
+@end
+
+@implementation UpdateResult
+
 
 
 @end

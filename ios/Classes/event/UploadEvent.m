@@ -8,6 +8,8 @@
 #import "UploadEvent.h"
 #import <MJExtension.h>
 #import <Photos/Photos.h>
+#import <AliyunOSSiOS.h>
+#import "UploadOptions.h"
 @interface UploadEvent ()
 
 /** 回调 */
@@ -47,7 +49,7 @@
 }
 /// 隐性上传
 -(void)_uploadFileWithParam:(UpdateOptions *)options{
- 
+    
     id<OSSCredentialProvider> provider = [OSSStsTokenCredentialProvider.alloc initWithAccessKeyId:options.accessKeyID
                                                                                       secretKeyId:options.accessSecretID
                                                                                     securityToken:options.accessToken];
