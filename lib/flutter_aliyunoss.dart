@@ -6,6 +6,9 @@ import 'package:flutter/services.dart';
 import 'src/file_upload.dart';
 import 'models/upload.dart';
 
+export 'models/upload.dart';
+export 'src/file_upload.dart';
+
 class MKAliyunOSS {
 
   static MKAliyunOSS _shareOss = MKAliyunOSS();
