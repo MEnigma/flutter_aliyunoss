@@ -51,8 +51,8 @@ class UpdateOptions {
 
   String toJson() {
 
-    List<String> suffix = (this.oriFileNames ?? []).map((String name){
-      return name.split('.').last;
+    List suffix = (this.oriFileNames ?? []).map((var name){
+      return name.toString().split('.').last;
     }).toList();
 
     return jsonEncode({
@@ -98,7 +98,7 @@ class UpdateOptions {
   List<String> filesBaseCode;
 
   /// 原图片名
-  List<String> oriFileNames;
+  List<dynamic> oriFileNames;
 
 
 }
@@ -168,5 +168,5 @@ class UpdateResult {
   int failNum;
 
   /// 文件名称列表
-  List<String> fileNames;
+  List<dynamic> fileNames;
 }
