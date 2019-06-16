@@ -70,5 +70,8 @@ NS_ASSUME_NONNULL_BEGIN
 /** 失败个数 */
 @property (nonatomic ,assign) NSInteger failNum;
 
+/** 文件名 */
+@property (nonatomic ,strong) NSArray<NSString *> *fileNames;
+
 @end
 NS_ASSUME_NONNULL_END

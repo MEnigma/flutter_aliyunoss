@@ -60,6 +60,7 @@
                                        credentialProvider:provider];
     
     NSInteger faileCount = 0;
+    NSMutableArray *filenames = [NSMutableArray array];
     for(int i = 0; i < options.filesBaseCode.count;i++){
         OSSPutObjectRequest *putRequest = [OSSPutObjectRequest.alloc init];
         putRequest.uploadingData = [NSData.alloc initWithBase64EncodedString:options.filesData[i] options:NSDataBase64DecodingIgnoreUnknownCharacters];
@@ -67,6 +68,7 @@
         
         NSString *dirname = (options.dirname && options.dirname.length>0) ? [options.dirname stringByAppendingString:@"/"] : @"";
         putRequest.objectKey = [NSString stringWithFormat:@"%@%u",dirname,arc4random()];
+        [filenames addObject:putRequest.objectKey.copy];
         OSSTask *task = [client putObject:putRequest];
         [task waitUntilFinished];
         if(task.error){
@@ -79,6 +81,7 @@
         result.totalnum = options.filesData.count;
         result.succedNum = result.totalnum-faileCount;
         result.failNum = faileCount;
+        result.fileNames = filenames;
         self.result(result.mj_JSONObject);
     }
     

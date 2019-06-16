@@ -124,6 +124,7 @@ class UpdateResult {
     this.totalnum = int.parse((data['totalnum'] ?? "").toString());
     this.succedNum = int.parse((data['succedNum'] ?? "").toString());
     this.failNum = int.parse((data['failNum'] ?? "").toString());
+    this.fileNames = data['fileNames'] ?? [];
   }
 
   String toJson() {
@@ -133,6 +134,7 @@ class UpdateResult {
       'totalnum': this.totalnum,
       'succedNum': this.succedNum,
       'failNum': this.failNum,
+      'fileNames':this.fileNames
     });
   }
 
@@ -150,4 +152,7 @@ class UpdateResult {
 
   ///  失败个数
   int failNum;
+
+  /// 文件名称列表
+  List<String> fileNames;
 }
