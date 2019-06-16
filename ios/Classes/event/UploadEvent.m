@@ -75,7 +75,7 @@
     }
     if(self.result){
         UpdateResult *result = [UpdateResult new];
-        result.result = true;
+        result.result = 1;
         result.totalnum = options.filesData.count;
         result.succedNum = result.totalnum-faileCount;
         result.failNum = faileCount;

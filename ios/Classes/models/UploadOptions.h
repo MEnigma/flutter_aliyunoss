@@ -56,7 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UpdateResult : NSObject
 
 /** 结果 */
-@property (nonatomic ,assign) BOOL result;
+@property (nonatomic ,assign) NSInteger result;
 
 /** 消息 */
 @property (nonatomic ,copy) NSString * message;
