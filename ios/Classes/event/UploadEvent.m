@@ -46,7 +46,7 @@
     
 }
 -(void)uploadFile:(FlutterMethodCall*)call{
-    UpdateOptions *options = [UpdateOptions mj_setKeyValues:call.arguments];
+    UpdateOptions *options = [UpdateOptions.new mj_setKeyValues:call.arguments];
     [self _uploadFileWithParam:options];
 }
 /// 隐性上传
