@@ -65,7 +65,7 @@
     NSMutableArray *filenames = [NSMutableArray array];
     for(int i = 0; i < options.filesBaseCode.count;i++){
         OSSPutObjectRequest *putRequest = [OSSPutObjectRequest.alloc init];
-        putRequest.uploadingData = [NSData.alloc initWithBase64EncodedString:options.filesData[i] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+        putRequest.uploadingData = [NSData.alloc initWithBase64EncodedString:options.filesBaseCode[i] options:NSDataBase64DecodingIgnoreUnknownCharacters];
         putRequest.bucketName = options.buketname;
         
         NSString *dirname = (options.dirname && options.dirname.length>0) ? [options.dirname stringByAppendingString:@"/"] : @"";
