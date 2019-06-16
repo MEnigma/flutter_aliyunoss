@@ -92,6 +92,7 @@
         result.succedNum = result.totalnum-faileCount;
         result.failNum = faileCount;
         result.fileNames = filenames;
+        result.message = options.mj_JSONString;
         self.result(result.mj_JSONObject);
     }
     
