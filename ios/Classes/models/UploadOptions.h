@@ -38,6 +38,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** 图片base64 */
 @property (nonatomic ,strong) NSArray<NSString*> *filesBaseCode;
+
+/** 原图片名 */
+@property (nonatomic ,strong) NSArray <NSString *> *oriFileNames;
+
+/** 原图片名尾缀 */
+@property (nonatomic ,strong) NSArray <NSString *> *oriFileNames_suffix;
 @end
 
 

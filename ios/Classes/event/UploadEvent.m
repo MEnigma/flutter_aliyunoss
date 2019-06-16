@@ -10,6 +10,8 @@
 #import <Photos/Photos.h>
 #import <AliyunOSSiOS.h>
 #import "UploadOptions.h"
+#import <CommonCrypto/CommonCrypto.h>
+
 @interface UploadEvent ()
 
 /** 回调 */
@@ -67,7 +69,15 @@
         putRequest.bucketName = options.buketname;
         
         NSString *dirname = (options.dirname && options.dirname.length>0) ? [options.dirname stringByAppendingString:@"/"] : @"";
-        putRequest.objectKey = [NSString stringWithFormat:@"%@%u",dirname,arc4random()];
+        /// 后缀
+        NSString *suffix = (options.oriFileNames_suffix  && (i < options.oriFileNames_suffix.count)) ? options.oriFileNames_suffix[i] : @".jpg";
+        
+        /// 制作文件名
+        NSString *timestamp = [NSString stringWithFormat:@"%f",NSDate.date.timeIntervalSince1970];
+        NSString *timestamp_base64 = [[timestamp dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+        NSString *randomName = [NSString stringWithFormat:@"%@.%@",[UploadEvent md5:timestamp_base64],suffix];
+        putRequest.objectKey = [NSString stringWithFormat:@"%@%@",dirname,randomName];
+        
         [filenames addObject:putRequest.objectKey.copy];
         OSSTask *task = [client putObject:putRequest];
         [task waitUntilFinished];
@@ -87,4 +97,17 @@
     
 }
 
++ (nullable NSString *)md5:(nullable NSString *)str {
+    if (!str) return nil;
+    
+    const char *cStr = str.UTF8String;
+    unsigned char result[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(cStr, (CC_LONG)strlen(cStr), result);
+    
+    NSMutableString *md5Str = [NSMutableString string];
+    for (int i = 0; i < CC_MD5_DIGEST_LENGTH; ++i) {
+        [md5Str appendFormat:@"%02x", result[i]];
+    }
+    return md5Str;
+}
 @end

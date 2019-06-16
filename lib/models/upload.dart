@@ -23,6 +23,7 @@ class UpdateOptions {
       this.filesPath,
       this.dirname,
       this.filesData,
+      this.oriFileNames,
       List<File> files}) {
     if (files != null && files.length > 0) {
       /// 有数据
@@ -45,9 +46,15 @@ class UpdateOptions {
     this.filesData = data['filesData'] ?? [];
     this.dirname = data['dirname'] ?? "";
     this.filesBaseCode = data['filesBaseCode'] ?? [];
+    this.oriFileNames = data['oriFileNames'] ?? [];
   }
 
   String toJson() {
+
+    List<String> suffix = (this.oriFileNames ?? []).map((String name){
+      return name.split('.').last;
+    }).toList();
+
     return jsonEncode({
       'accessKeyID': this.accessKeyID,
       'accessSecretID': this.accessSecretID,
@@ -58,6 +65,8 @@ class UpdateOptions {
       'dirname': this.dirname,
       'filesData': this.filesData,
       'filesBaseCode': this.filesBaseCode,
+      'oriFileNames': this.oriFileNames,
+      'oriFileNames_suffix': suffix,
     });
   }
 
@@ -87,6 +96,11 @@ class UpdateOptions {
 
   /// 图片base64
   List<String> filesBaseCode;
+
+  /// 原图片名
+  List<String> oriFileNames;
+
+
 }
 
 /// 进度
@@ -134,7 +148,7 @@ class UpdateResult {
       'totalnum': this.totalnum,
       'succedNum': this.succedNum,
       'failNum': this.failNum,
-      'fileNames':this.fileNames
+      'fileNames': this.fileNames
     });
   }
 
